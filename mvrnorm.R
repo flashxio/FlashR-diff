@@ -7,7 +7,7 @@ mvrnorm <-
     eS <- eigen(Sigma, symmetric = TRUE)
     ev <- eS$values
     if(!all(ev >= -tol*abs(ev[1L]))) stop("'Sigma' is not positive definite")
-    X <- matrix(rnorm(p * n), n)
+    X <- fm.rnorm.matrix(n, p)
     if(empirical) {
         X <- scale(X, TRUE, FALSE) # remove means
         X <- X %*% svd(X, nu = 0)$v # rotate to PCs
